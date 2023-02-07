@@ -23,12 +23,12 @@ Docker <br/>
 ## MYSQL
 |항목|항목 이름|값|
 |:-----:|:----:|:---:|
-|MYSQL 이미지 이름|image:|mysql:5.7|
-|사용할 네트워크|networks:|internal|
-|사용할 볼륨|volumes:|compose-db|
-|마운트 위치|  |/var/lib/mysql|
-|재시작 설정|restart:|always|
-|MySQL 설정|environment:|환경변수 설정|
+|MYSQL 이미지 이름|image: |mysql:5.7|
+|사용할 네트워크|networks: |internal|
+|사용할 볼륨|volumes: |compose-db|
+|마운트 위치||/var/lib/mysql|
+|재시작 설정|restart: |always|
+|MySQL 설정|environment: |환경변수 설정|
 |MySQL 루트 패스워드|MYSQL_ROOT_PASSWORD|123|
 |MySQL 데이터베이스 이름|MYSQL_DATABASE|wp-db|
 |MYSQL 사용자 이름|MYSQL_USER|wp-user|
@@ -38,13 +38,13 @@ Docker <br/>
 |항목|항목 이름|값|
 |:-----:|:----:|:---:|
 |의존관계|depends_on|database|
-|워드프레스 이미지 이름|image:|mysql:5.7|
-|사용할 네트워크|networks:|internal, external|
-|사용할 볼륨|volumes:|compose-db|
-|마운트 위치|  |/var/www/html|
-|포트 번호|port:|8085:80|
-|재시작 설정|restart:|always|
-|MySQL 설정|environment:|환경변수 설정|
+|워드프레스 이미지 이름|image: |mysql:5.7|
+|사용할 네트워크|networks: |internal/external|
+|사용할 볼륨|volumes: |compose-db|
+|마운트 위치||/var/www/html|
+|포트 번호|port: |8085:80|
+|재시작 설정|restart: |always|
+|MySQL 설정|environment: |환경변수 설정|
 |데이터베이스 컨테이너 이름|WORDPRESS_DB_HOST|database|
 |데이터베이스 이름|WORDPRESS_DB_NAME|wp-db|
 |데이터베이스 사용자 이름|WORDPRESS_DB_USER|wp-user|
