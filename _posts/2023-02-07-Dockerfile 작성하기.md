@@ -21,6 +21,7 @@ Docker <br/>
 # 조건
 
 ## MYSQL
+
 |항목|항목 이름|값|
 |:-----:|:----:|:---:|
 |MYSQL 이미지 이름|image: |mysql:5.7|
@@ -35,6 +36,7 @@ Docker <br/>
 |MYSQL 패스워드|MYSQL_PASSWORD|1234|
 
 ## DATABASE
+
 |항목|항목 이름|값|
 |:-----:|:----:|:---:|
 |의존관계|depends_on|database|
