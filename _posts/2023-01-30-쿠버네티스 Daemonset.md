@@ -83,6 +83,86 @@ kubectl rollout undo daemonset nginx-demon
 kubectl delete ds.apps nginx-demon
 ```
 
+## Node Selector
+
+node selector를 사용하여 특정 노드에서만 pod를 생성하고 실행할 수 있습니다.
+
+```javascript
+# daemon.yaml
+
+apiVersion: apps/v1
+kind: Daemonset
+metadata:
+  name: my-ds
+  labels:
+    env: test
+spec:
+  selector:
+    matchLabels:
+      app: my-ds
+    template:
+      metadata:
+        labels:
+          app: my-ds
+      spec:
+        nodeSelector:
+          node-status: enable
+        containers:
+          - name: myapp
+            image: nginx:1.14
+            imagePullPolicy: IfNotPresent
+            ports:
+              - containerPort: 8080
+                protocol: TCP
+```
+
+이렇게 파일을 작성하고<br/>
+
+```javascript
+kubectl apply -f daemon.yaml
+```
+
+파일을 실행한 다음 확인하면 NODE SELECTOR 에 설정한 값이 들어간 것을 확인할 수 있다.<br/>
+
+![스크린샷_20230213_103512](https://user-images.githubusercontent.com/99805929/218407757-6eaf7702-6250-4cfa-8611-9debf7ff4623.png)
+<br/>
+
+```javascript
+kubectl get nodes --show-labels
+```
+
+위 명령어로 개별 Node의 Label을 확인하면 우리가 설정한 node-status=enable 은 설정되있지 않는 것을 확인 할 수 있다.<br/>
+
+![스크린샷_20230213_103807](https://user-images.githubusercontent.com/99805929/218408116-e8cc4fd1-9019-4780-8047-f2da85b123ba.png)<br/>
+
+node에 label을 추가해봤다.<br/>
+
+```javascript
+kubectl label nodes node2 node-status=enable
+kubectl get nodes --show-labels
+```
+
+![스크린샷_20230213_103941](https://user-images.githubusercontent.com/99805929/218408328-8f5f602e-123e-49de-acc6-98116b94cd21.png)<br/>
+
+node2에 label이 추가된 것을 확인 할 수 있다.<br/>
+
+![스크린샷_20230213_104002](https://user-images.githubusercontent.com/99805929/218408480-d500611e-bd0d-4da0-a2fb-052671b1b337.png)
+
+이렇게 볼 수도 있다.<br/>
+
+```javascript
+kubectl get nodes -L node-status
+```
+
+![스크린샷_20230213_104032](https://user-images.githubusercontent.com/99805929/218408816-abfa326f-2b6e-4316-bdaa-80dc6d497e77.png)
+
+그래서 node-status=enable 을 설정한 node2 에서만 pod가 생성된다.<br/>
+
+![스크린샷_20230213_103950](https://user-images.githubusercontent.com/99805929/218409389-7e2e479d-1d31-4819-90ca-e9cf41cd3b0e.png)
+
+결론은 daemon.yaml 파일에서 설정한 nodeSelector 값이 있는 node에서만 DaemonSet이 실행된다는 것이다.
+
+
 <br/>
 <br/>
 
