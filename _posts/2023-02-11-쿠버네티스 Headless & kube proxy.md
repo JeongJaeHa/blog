@@ -35,7 +35,7 @@ metadata:
   name: headless-service
 spec:
   type: ClusterIP
-  clusterIP: None  // 반드시 입력
+  clusterIP: None  // ★중요★ 반드시 입력
   selector:
     app: webui
   ports:
