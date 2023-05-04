@@ -42,7 +42,7 @@ tags:
 <img width="613" alt="image" src="https://user-images.githubusercontent.com/99805929/235460175-49783f2f-c87d-4e1b-8c24-b4efb35087d6.png"><br/>
 
 ## 해결방법
-그래서 원래는 클러스터 안에 Jenkins 서버를 운영할 예정이였으나 EKS 클러스터 외부에 별도의 인스턴스를 생성하고 Jenkins 서버를 운영하는 방식으로 운영하였다.<br/>
+그래서 원래는 클러스터 안에 Jenkins 서버를 운영할 예정이였으나 EKS 클러스터 외부에 별도의 인스턴스를 생성하고 Jenkins 서버를 운영하는 방식을 선택하였다.<br/>
 
 ![스크린샷 2023-04-29 오후 5 41 48](https://user-images.githubusercontent.com/99805929/235459866-d569830a-4eb3-49cb-913d-3b868d8d08da.png)<br/>
 
@@ -84,9 +84,6 @@ Github 리포지토리에 argocd 배포를 진행할 때 사용할 yaml 파일�
 배포를 진행할 때는 `latest 태그`가 붙은 이미지를 사용하여 별도의 yaml 파일 수정없이 배포가 진행되도록 설정하였다.
 
 <img width="1470" alt="image" src="https://user-images.githubusercontent.com/99805929/235464575-cb22ec1c-1f03-447e-ba67-41b9aaed6544.png"><br/>
-
-
-# Reference
 
 # 시연 영상
 [![5INQUE](https://user-images.githubusercontent.com/99805929/235467186-bad25ff1-55b4-455e-b02e-c1470d42c269.png)](https://www.youtube.com/watch?v=g0sOjydT7lE&ab_channel=JoonyoungLee) 
